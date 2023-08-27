@@ -7,11 +7,12 @@ num = [0, 0, 0, 0, 0, 0]
 avg = [0, 0, 0, 0, 0, 0]
 eps = 0.85
 l = [0] * 5
-
+d = 0
 
 def closest():
     for i in range(5):
         l[i] = abs(avg[i] - avg[5])
+    d = l.index(min(l))
     return l.index(min(l))
 
 
@@ -24,24 +25,28 @@ def exploration():
     num[5] += 1
     avg[arm] = round(sum[arm] / num[arm], 2)
     avg[5] = round(sum[5] / num[5], 2)
-    closest()
+    change(eps)
+
 
 def change(eps):
-    if avg[5] < avg[i]:
-        eps = eps/2
+    flag = 0
+    if d == closest():
+        flag = 1
+    if flag == 1:
+        eps = eps / 2
     else:
-        eps = eps*2
+        eps = eps * 2
 
 
 def exploitation(i):
-    r = reward_list[randint(0, 3)]
+    r = rewardlist[randint(0, 3)]
     sum[i] = sum[i] + r
     num[i] = num[i] + 1
     avg[i] = round(sum[i] / num[i], 2)
-    closest()
+    change(eps)
 
 
-for _ in range(1000):
+for  in range(1000):
     a = random()
     if a <= eps:
         exploration()
