@@ -1,1 +1,1 @@
-This project intends to be an introduction to reinforcement learning based control systems. It will involve the study and implementation of classic reinforment learning algorithms, atleast one of which will running on an RPi to solve a control problem
+This project intends to be an introduction to reinforcement learning based control systems. It will involve the study and implementation of classic reinforment learning algorithms, atleast one of which will running on an RPi to solve a control problem.
