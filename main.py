@@ -8,7 +8,7 @@ num_arms = 5
 reward_list = np.random.normal(0, 1, num_arms)
 
 # Number of runs
-num_runs = 50
+num_runs = 2000
 
 # Number of time steps
 num_steps = 1000
@@ -49,7 +49,7 @@ for e, epsilon in enumerate(epsilons):
             rewards[step] = reward
 
         # Store the average rewards for this run
-        average_rewards[e, run] = np.cumsum(rewards) / (np.arange(num_steps) + 1)
+        average_rewards[e] += rewards / num_runs
 
 # Calculate and plot the average rewards for each epsilon value
 plt.figure(figsize=(10, 6))
@@ -59,6 +59,6 @@ for e, epsilon in enumerate(epsilons):
 
 plt.xlabel("Time Steps")
 plt.ylabel("Average Reward")
-plt.title("Epsilon-Greedy Method for K-Armed Bandit (50 Runs)")
+plt.title("Epsilon-Greedy Method for K-Armed Bandit (2000 Runs)")
 plt.legend()
 plt.show()
