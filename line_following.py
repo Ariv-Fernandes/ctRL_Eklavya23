@@ -14,10 +14,6 @@ actions = ["straight", "left", "right"]
 num_runs = 4000
 # Number of time steps
 num_steps = 1000
-# Epsilon value to test
-epsilon = 0.9
-learning_factor = 0.9
-discount_factor = 0.9
 
 
 # function for terminal state:
@@ -75,3 +71,35 @@ def get_shortest_path(sl1, sl2, sl3, sl4, sl5):
             cl1, cl2, cl3, cl4, cl5 = get_next_location(cl1, cl2, cl3, cl4, cl5, action_index)
             shortest_path.append([cl1, cl2, cl3, cl4, cl5])
         return shortest_path
+
+
+# define training parameters
+epsilon = 0.9  # the percentage of time when we should take the best action (instead of a random action)
+discount_factor = 0.9  # discount factor for future rewards
+learning_rate = 0.9  # the rate at which the AI agent should learn
+
+# run through 4000 training episodes
+for episode in range(num_runs):
+    # get the starting location for this episode
+    # row_index, column_index = get_starting_location()
+
+    # continue taking actions (i.e., moving) until we reach a terminal state
+    # (i.e., until we reach the item packaging area or crash into an item storage location)
+    while not if_terminal_state(l1, l2, l3, l4, l5):
+        # choose which action to take (i.e., where to move next)
+        action_index = get_next_action(l1, l2, l3, l4, l5, epsilon)
+
+        # perform the chosen action, and transition to the next state (i.e., move to the next location)
+        ol1, ol2, ol3, ol4, ol5 = l1, l2, l3, l4, l5  # store the old row and column indexes
+        l1, l2, l3, l4, l5 = get_next_location(l1, l2, l3, l4, l5, action_index)
+
+        # receive the reward for moving to the new state, and calculate the temporal difference
+        reward = reward_list[l1, l2, l3, l4, l5]
+        old_q_value = q_values[ol1, ol2, ol3, ol4, ol5, action_index]
+        temporal_difference = reward + (discount_factor * np.max(q_values[l1, l2, l3, l4, l5])) - old_q_value
+
+        # update the Q-value for the previous state and action pair
+        new_q_value = old_q_value + (learning_rate * temporal_difference)
+        q_values[ol1, ol2, ol3, ol4, ol5, action_index] = new_q_value
+
+print('Training complete!')
