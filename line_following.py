@@ -1,8 +1,6 @@
 import numpy as np
-from turtle import *
 
-t = Turtle()
-l1, l2, l3, l4, l5 = 0, 0, 0, 0, 0
+l1, l2, l3, l4, l5 = 255, 255, 255, 255, 255
 # Assigning Rewards
 q_values = np.zeros((l1, l2, l3, l4, l5, 3))
 reward_list = np.full((l1, l2, l3, l4, l5), -100)
@@ -40,20 +38,23 @@ def get_next_action(cl1, cl2, cl3, cl4, cl5, eps):
     if np.random.random() < eps:  # best action
         return np.argmax(q_values[cl1, cl2, cl3, cl4, cl5])
     else:
-        return np.random.randint(4)  # random action
+        return np.random.randint(3)  # random action
 
 
 # next location based on previous action
 def get_next_location(cl1, cl2, cl3, cl4, cl5, action_index):
     nl1, nl2, nl3, nl4, nl5 = cl1, cl2, cl3, cl4, cl5
     if actions[action_index] == 'straight' and cl2 == 0 and cl3 == 0 and cl5 == 0:
-        t.forward(5)
+        # t.forward(5)
+        pass
     elif actions[action_index] == 'right' and cl2 == 0 and cl3 == 0 and cl4 == 0:
-        t.right(90)
-        t.forward(5)
+        # t.right(90)
+        # t.forward(5)
+        pass
     if actions[action_index] == 'left' and cl1 == 0 and cl2 == 0 and cl3 == 0:
-        t.left(90)
-        t.forward(5)
+        # t.left(90)
+        # t.forward(5)
+        pass
     return nl1, nl2, nl3, nl4, nl5
 
 
@@ -84,13 +85,12 @@ for episode in range(num_runs):
     # row_index, column_index = get_starting_location()
 
     # continue taking actions (i.e., moving) until we reach a terminal state
-    # (i.e., until we reach the item packaging area or crash into an item storage location)
     while not if_terminal_state(l1, l2, l3, l4, l5):
         # choose which action to take (i.e., where to move next)
         action_index = get_next_action(l1, l2, l3, l4, l5, epsilon)
 
         # perform the chosen action, and transition to the next state (i.e., move to the next location)
-        ol1, ol2, ol3, ol4, ol5 = l1, l2, l3, l4, l5  # store the old row and column indexes
+        ol1, ol2, ol3, ol4, ol5 = l1, l2, l3, l4, l5  # store the old LSA readings
         l1, l2, l3, l4, l5 = get_next_location(l1, l2, l3, l4, l5, action_index)
 
         # receive the reward for moving to the new state, and calculate the temporal difference
