@@ -10,7 +10,7 @@ if (l2 == 0 and l3 == 0) and (l5 == 0 or l1 == 0 or l4 == 0):
 actions = ["straight", "left", "right"]
 # Number of runs
 num_runs = 4000
-# Number of time steps
+# Number of time step
 num_steps = 1000
 
 
