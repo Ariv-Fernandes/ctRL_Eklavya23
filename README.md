@@ -9,9 +9,12 @@ This project intends to be an introduction to reinforcement learning based contr
 This project represents our journey in reinforcement learning. It includes the implementation of problems in reinforcement learning ranging from solving a simple version of the k-armed bandits problem to a simulation of the line following bot using Q-learning algorithm. 
 ## Getting started
 ### Dependencies
-
+- [Python](https://www.python.org/)
+- [NumPy](https://numpy.org/)
+- [CoppeliaSim](https://www.coppeliarobotics.com/resources)
 ### Installations
-
+Just clone this repository - git clone https://github.com/Ariv-Fernandes/ctRL_Eklavya23.git - and
+you're ready to go! 
 ## Future Work
 1.	Exploration and implementation of more problems covering the concepts of dynamic programming, Monte Carlo technique and Temporal-Difference learning.
 2.	We aim to implement the classic reinforcement learning algorithms, in which we’ll run it on an RPi to solve a control problem. 
