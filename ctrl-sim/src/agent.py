@@ -60,20 +60,6 @@ def get_next_location(cl1, cl2, cl3, cl4, cl5, action_index):
     return get_observation_from_sim()
 
 
-# function for shortest path:
-# def get_shortest_path(sl1, sl2, sl3, sl4, sl5):
-#     if if_terminal_state(sl1, sl2, sl3, sl4, sl5):
-#         return []
-#     else:  # if legal starting location
-#         cl1, cl2, cl3, cl4, cl5 = sl1, sl2, sl3, sl4, sl5
-#         shortest_path = [[cl1, cl2, cl3, cl4, cl5]]
-#         while not if_terminal_state(cl1, cl2, cl3, cl4, cl5):
-#             # take the best action
-#             action_index = get_next_action(cl1, cl2, cl3, cl4, cl5, 1)
-#             # move to the next location on the path, and add the new location to the list
-#             cl1, cl2, cl3, cl4, cl5 = get_next_location(cl1, cl2, cl3, cl4, cl5, action_index)
-#             shortest_path.append([cl1, cl2, cl3, cl4, cl5])
-#         return shortest_path
 
 
 # define training parameters
@@ -110,56 +96,3 @@ for episode in range(num_runs):
     q_values[ol1, ol2, ol3, ol4, ol5, action_index] = new_q_value
 
 print('Training complete!')
-print(q_values)
-# pygame.init()
-# screen = pygame.display.set_mode((800, 500))
-# pygame.display.set_caption("Line Following Bot")
-# clock = pygame.time.Clock()
-# surface = pygame.Surface((800, 500))
-# surface.fill((52, 52, 52))
-# ellipse_center = (400, 250)
-# ellipse_radius_x = 300
-# ellipse_radius_y = 200
-# bot = pygame.image.load("bott.png").convert()
-# bot_rect = bot.get_rect(midbottom=(400, 475))
-# angle,speed=0,2
-# bot_rect.centerx, bot_rect.centery = ellipse_center[0] + ellipse_radius_x, ellipse_center[1]
-# while True:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             pygame.quit()
-#             exit()
-#
-#     screen.blit(surface, (0, 0))
-#
-#     pygame.draw.ellipse(screen, 'White', (ellipse_center[0] - ellipse_radius_x, ellipse_center[1] - ellipse_radius_y,
-#                                           ellipse_radius_x * 2, ellipse_radius_y * 2), 10)
-#     # angle -= 1*speed
-#     # if angle <= -360:
-#     #     angle = 0
-#     # bot_rect.centerx = ellipse_center[0] + ellipse_radius_x * math.cos(math.radians(angle))
-#     # bot_rect.centery = ellipse_center[1] + ellipse_radius_y * math.sin(math.radians(angle))
-#
-#     keys = pygame.key.get_pressed()
-#     if keys[pygame.K_UP]:
-#         bot_rect.centery -= 10 * speed
-#
-#     if keys[pygame.K_DOWN]:
-#         bot_rect.centery += 10 * speed
-#
-#     if keys[pygame.K_LEFT]:
-#         angle -= 1 * speed
-#         bot_rect.centerx = ellipse_center[0] + ellipse_radius_x * math.cos(math.radians(angle))
-#         bot_rect.centery = ellipse_center[1] + ellipse_radius_y * math.sin(math.radians(angle))
-#     if keys[pygame.K_RIGHT]:
-#         angle += 1 * speed
-#         bot_rect.centerx = ellipse_center[0] + ellipse_radius_x * math.cos(math.radians(angle))
-#         bot_rect.centery = ellipse_center[1] + ellipse_radius_y * math.sin(math.radians(angle))
-#     if pygame.key.get_pressed():
-#         screen.blit(pygame.transform.rotate(bot, 90 - angle), bot_rect)
-#     else:
-#         screen.blit(bot,bot_rect)
-#     pwm_1 = bot_rect.topleft
-#     pwm_2 = bot_rect.bottomleft
-#     pygame.display.update()
-#     clock.tick(60)
