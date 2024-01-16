@@ -48,9 +48,6 @@ def pass_action_to_sim(angle):
     print(pwm)
 
 
-
-
-
 # next location based on previous action
 def get_next_location(cl1, cl2, cl3, cl4, cl5, action_index):
     if actions[action_index] == 90 and cl2 == 0 and cl3 == 0 and cl5 == 0:
@@ -60,7 +57,6 @@ def get_next_location(cl1, cl2, cl3, cl4, cl5, action_index):
     if 90 > actions[action_index] >= 0 == cl1 and cl2 == 0 and cl3 == 0:
         pass_action_to_sim(actions[action_index])
     return get_observation_from_sim()
-
 
 # function for shortest path:
 # def get_shortest_path(sl1, sl2, sl3, sl4, sl5):
@@ -76,7 +72,6 @@ def get_next_location(cl1, cl2, cl3, cl4, cl5, action_index):
 #             cl1, cl2, cl3, cl4, cl5 = get_next_location(cl1, cl2, cl3, cl4, cl5, action_index)
 #             shortest_path.append([cl1, cl2, cl3, cl4, cl5])
 #         return shortest_path
-
 
 # define training parameters
 epsilon = 0.9  # the percentage of time when we should take the best action (instead of a random action)
