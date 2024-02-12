@@ -1,5 +1,5 @@
 # ctRL
-This project intends to be an introduction to reinforcement learning based control systems. It will involve the study and implementation of classic reinforment learning algorithms, atleast one of which will running on an RPi to solve a control problem.
+This project intends to be an introduction to reinforcement learning. It will involve the study and implementation of classic reinforment learning algorithms, one of which will be a simulation of the movement of a line following bot.
 ## Table of contents
 - [About the project](https://github.com/Ariv-Fernandes/ctRL_Eklavya23/blob/main/README.md#about-the-project)
 - [Getting started](https://github.com/Ariv-Fernandes/ctRL_Eklavya23/blob/main/README.md#getting-started)
